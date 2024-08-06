@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main style="margin-top:80px">
+    <div class="container text-center lh-lg p-4">  
+        <span class="display-1 fw-medium">Your One-Stop Shop</span> 
+        <br>
+        <span class="display-1 text-success">Explore  Today!</span> 
+    </div> 
+</main>  
+
+
+<div style="" class="container p-5">
+    <h2 class='text-secondary text-center p-5'>Recent Products</h2> 
+    <div class='d-flex my-3'> 
+        <h4>Search Products</h4> 
+        <form class='mx-3' method="GET">  
+            <input type="text" name='product_name' id='product.name'>  
+        </form>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 g-lg-4"> 
+        {% for product in page_obj %}
+        <div class="col mb-4">
+            <div class="card shadow p-1">
+                <a style="text-decoration:none" href="{% url 'myapp:product_detail' product.id %}"> 
+                    <img style="width:100%" src="{{product.image.url}}" alt="">
+                    <br>   
+                    <h4 class="mx-3 mt-3 text-dark">{{product.name}}</h4>
+                    <h3 class="mx-3 mt-1 text-success">$ {{product.price}}</h3> 
+                    <h6 class="mx-3 mt-3 text-dark">Posted by: <span class="text-info-emphasis fw-bold">{{product.seller_name}}</span></h6> 
+                    <p class="mx-3 mt-1 text-dark">{{product.desc}}</p>  
+                    <br>
+                </a> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="pagination container d-flex justify-content-center mb-5">
+    <span>
+        {% if page_obj.has_previous %}
+        <a class='text-success text-decoration-none fs-5 border border-success px-2' href="?page=1">First</a>  
+        <a class='text-success text-decoration-none fs-5 border border-success px-2' href="?page={{ page_obj.previous_page_number }}">Previous</a> 
+        {% endif %}
+        <span class="fs-5 text-success mx-2">
+            page {{page_obj.number}} of {{page_obj.paginator.num_pages}} 
+        </span>
+        {% if page_obj.has_next %}
+        <a class='text-success text-decoration-none fs-5 border border-success px-2' href="?page={{ page_obj.next_page_number }}">Next</a> 
+        <a class='text-success text-decoration-none fs-5 border border-success px-2' href="?page={{page_obj.paginator.num_pages}}">Last</a>  
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock content %}
+

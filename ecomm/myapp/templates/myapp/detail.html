@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div style="margin-top:100px" class="container d-flex"> 
+    <img class="" style="width:30%" src="{{product.image.url}}" alt=""> 
+    <div class="mt-5 mx-5" > 
+        <h3>{{product.name}}</h3> 
+        <h4 class="text-success">$ {{product.price}}</h4>  
+        <h5>{{product.desc}}</h5>
+        <h5 >Posted by:  
+            <a class="text-decoration-none" href="{% url "users:sellerprofile" product.seller_name.id %}"> 
+                {{product.seller_name}} 
+            </a> 
+        </h5>
+        <h5>Contact: {{product.seller_name.profile.contact_number}}</h5>  
+    </div>
+
+</div>  
+
+
+{% endblock content %} 

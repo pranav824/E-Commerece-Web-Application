@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container" style="margin-top:80px">
+    <h2 class="mx-4 text-success">+ Add Products</h2>  
+    <form class="form p-4" action="" method="POST" enctype ="multipart/form-data">
+        {% csrf_token %} 
+        <div class="m-2">
+            <label class="form-label" for="name">Name:</label>  
+            <div class="form-control">
+            {{form.name}}
+            </div> 
+            {% comment %} <input class="form-control" type="text" id="name" name="name"> {% endcomment %}
+        </div>
+        <div class="m-2">
+            <label class="form-label"  for="price">Price:</label>
+            <div class="form-control">
+                {{form.price}}
+            </div> 
+            {% comment %} <input class="form-control" type="number" id="price" name="price"> {% endcomment %}
+        </div>
+        <div class="m-2">
+            <label class="form-label"  for="desc">Description:</label>
+            <div class="form-control">
+                {{form.desc}}
+            </div> 
+            {% comment %} <textarea class="form-control" name="desc" id="desc" cols="30" rows="10"> {% endcomment %}
+                
+            </textarea>
+        </div> 
+        <div class="m-2">
+            <label class="form-label"  for="image">Image:</label> 
+            <div class="form-control">
+                {{form.image}}  
+            </div> 
+            {% comment %} <input class="form-control" type="file" accept="image/*" id="image" name="image">  {% endcomment %}
+        </div>
+        <div class="form-control d-none"> 
+                {{form.seller_name}} 
+        </div> 
+
+        <button class="mx-4 btn btn-success" type="submit">Add</button>
+    </form>
+</div>
+
+{% comment %} {{form.name}}  {% endcomment %}
+
+
+{% endblock content %}
+
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="margin-top:50px" class="container">
+    <form action="" method="POST" enctype = 'multipart/form-data' class="form shadow rounded m-5 p-4">
+        {% csrf_token %} 
+        <div class="mb-2">
+            <label class="form-label" for="upload">Uplode profile image</label>   
+            <input class="form-control" type="file" accept='image/*' name="upload" id="upload"> 
+        </div>
+        <div class="mb-2"> 
+            <label class="form-label" for="contact_number">Contact number</label>   
+            <input class="form-control" type="text" name="contact_number" id="contact_number" placeholder="9999999999">
+        </div>
+
+        <button class="btn btn-success mt-3" type="submit">Submit</button> 
+    </form>
+    
+</div>
+
+
+{% endblock content %}
